@@ -1,0 +1,23 @@
+{
+  "name": "parliament-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for ParlIQ - Parliamentary Intelligence",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "F. Galiano Consulting Ltd",
+  "license": "ISC",
+  "packageManager": "pnpm@10.30.2",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^6.0.2"
+  }
+}
