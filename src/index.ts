@@ -85,7 +85,7 @@ server.tool(
     mode: z
       .enum(["fast", "deep"])
       .optional()
-      .describe("Search mode: 'fast' (Haiku) or 'deep' (Sonnet)"),
+      .describe("Search mode: 'fast' (concise, quicker) or 'deep' (detailed, more thorough)"),
     sourceTypes: z
       .array(z.string())
       .optional()
@@ -359,7 +359,7 @@ server.tool(
     mode: z
       .enum(["fast", "deep"])
       .optional()
-      .describe("Search mode: 'fast' (Haiku) or 'deep' (Sonnet)"),
+      .describe("Search mode: 'fast' (concise, quicker) or 'deep' (detailed, more thorough)"),
   },
   async (args) => {
     const body: Record<string, unknown> = {
