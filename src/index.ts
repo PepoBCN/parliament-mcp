@@ -73,13 +73,13 @@ server.tool(
   "search_evidence",
   "Search parliamentary evidence (reports, oral evidence, written evidence, Hansard debates) using semantic search. Returns an AI-generated answer with source citations.",
   {
-    query: z.string().describe("The search query"),
+    query: z.string().min(1).max(2000).describe("The search query"),
     reportIds: z
-      .array(z.number())
+      .array(z.number().int().positive())
       .optional()
       .describe("Optional array of report IDs to filter by"),
     limit: z
-      .number()
+      .number().int().min(1).max(100)
       .optional()
       .describe("Max number of source chunks to return (default 10)"),
     mode: z
@@ -146,7 +146,7 @@ server.tool(
   "get_member_profile",
   "Get an AI-generated profile of a committee member (MP or Lord), including their background, interests, and committee roles.",
   {
-    memberId: z.number().describe("The member's numeric ID"),
+    memberId: z.number().int().positive().describe("The member's numeric ID"),
   },
   async (args) => {
     const data = await apiGet(`/api/mcp/members/${args.memberId}/profile`);
@@ -161,7 +161,7 @@ server.tool(
   "get_member_activity",
   "Get a member's Hansard debate contributions - what they've said in Parliament.",
   {
-    memberId: z.number().describe("The member's numeric ID"),
+    memberId: z.number().int().positive().describe("The member's numeric ID"),
   },
   async (args) => {
     const input = encodeURIComponent(
@@ -182,7 +182,7 @@ server.tool(
   "get_member_votes",
   "Get a member's voting record in Parliament - how they voted on divisions.",
   {
-    memberId: z.number().describe("The member's numeric ID"),
+    memberId: z.number().int().positive().describe("The member's numeric ID"),
   },
   async (args) => {
     const input = encodeURIComponent(
@@ -203,7 +203,7 @@ server.tool(
   "get_member_written_questions",
   "Get written questions tabled by a member of Parliament.",
   {
-    memberId: z.number().describe("The member's numeric ID"),
+    memberId: z.number().int().positive().describe("The member's numeric ID"),
   },
   async (args) => {
     const input = encodeURIComponent(
@@ -224,9 +224,9 @@ server.tool(
   "compare_say_vs_vote",
   "Compare what a member has said about a topic (via semantic search) with how they've voted. Useful for spotting consistency or contradictions between rhetoric and voting behaviour.",
   {
-    memberId: z.number().describe("The member's numeric ID"),
-    memberName: z.string().describe("The member's name (for the search query)"),
-    topic: z.string().describe("The topic to compare (e.g. 'renewable energy', 'AI regulation')"),
+    memberId: z.number().int().positive().describe("The member's numeric ID"),
+    memberName: z.string().min(1).max(100).describe("The member's name (for the search query)"),
+    topic: z.string().min(1).max(500).describe("The topic to compare (e.g. 'renewable energy', 'AI regulation')"),
   },
   async (args) => {
     // Run both calls in parallel
@@ -276,7 +276,7 @@ server.tool(
   "get_witness",
   "Get details about a specific witness including their evidence sessions and testimony.",
   {
-    witnessId: z.string().describe("The witness ID"),
+    witnessId: z.string().min(1).max(128).describe("The witness ID"),
   },
   async (args) => {
     const input = encodeURIComponent(
