@@ -3,3 +3,7 @@ dist/
 *.js.map
 *.d.ts.map
 .env
+
+# graphify
+graphify-out/
+.claude/
