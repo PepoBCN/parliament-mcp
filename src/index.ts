@@ -7,7 +7,7 @@ import { z } from "zod/v3";
 // Configuration
 const API_URL =
   process.env.PARLIQ_API_URL ||
-  "https://diplomatic-mindfulness-parliq-dev.up.railway.app";
+  "https://parliq.feldberg.co";
 const API_KEY = process.env.PARLIQ_API_KEY || "";
 
 // Helper: make API requests to ParlIQ
@@ -128,7 +128,7 @@ server.tool(
     slug: z
       .string()
       .describe(
-        "Committee slug (e.g. 'science-innovation-and-technology', 'energy-security-and-net-zero')"
+        "Committee slug (e.g. 'science-innovation-technology', 'energy-security-net-zero', 'environmental-audit', 'justice', 'treasury', 'business-trade')"
       ),
   },
   async (args) => {

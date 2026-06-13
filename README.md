@@ -32,7 +32,7 @@ Two environment variables:
 
 | Variable | Description | Default |
 |---|---|---|
-| `PARLIQ_API_URL` | ParlIQ API base URL | `https://diplomatic-mindfulness-parliq-dev.up.railway.app` |
+| `PARLIQ_API_URL` | ParlIQ API base URL | `https://parliq.feldberg.co` |
 | `PARLIQ_API_KEY` | API key for authentication | (none) |
 
 ## Claude Desktop config
@@ -44,9 +44,9 @@ Add to your `claude_desktop_config.json`:
   "mcpServers": {
     "parliq": {
       "command": "node",
-      "args": ["/absolute/path/to/parliament-mcp/dist/index.js"],
+      "args": ["/absolute/path/to/parliq-mcp/dist/index.js"],
       "env": {
-        "PARLIQ_API_URL": "https://diplomatic-mindfulness-parliq-dev.up.railway.app",
+        "PARLIQ_API_URL": "https://parliq.feldberg.co",
         "PARLIQ_API_KEY": "your-api-key"
       }
     }
