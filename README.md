@@ -81,7 +81,7 @@ pnpm test:watch  # vitest in watch mode
 
 ## Scope
 
-Current parliamentary session only (2024-25). It covers six select committees:
+It covers the six select committees that ParlIQ tracks:
 
 - Science, Innovation and Technology
 - Energy Security and Net Zero
